@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.css">
     <title>
         
-        DOM对象和JQuery对象的区别｜Striver&#39;s blog
+        Hello World｜Striver&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://zffstruggling.github.io/2017/09/22/Dom/">
+    <link rel="canonical" href="http://zffstruggling.github.io/2017/09/27/hello-world/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -137,12 +137,12 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>DOM对象和JQuery对象的区别</h1>
+                    <h1>Hello World</h1>
                     
                     <span class="meta">
                          作者 张飞飞
                         <span>
-                          日期 2017-09-22
+                          日期 2017-09-27
                          </span>
                     </span>
                     <div class="tags text-center">
@@ -154,7 +154,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            DOM对象和JQuery对象的区别
+            Hello World
         </span>
     </div>
 </header>
@@ -165,36 +165,25 @@
         <div class="row">
             <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
-                <p>第一次学习jQuery,经常分辨不清哪些是jQuery对象，哪些是 DOM对象，因此需要重点了解jQuery对象和DOM对象以及它们之间的关系.</p>
-<h2 id="DOM对象"><a href="#DOM对象" class="headerlink" title="DOM对象"></a>DOM对象</h2><p>即是我们用传统的方法(javascript)获得的对象，jQuery对象即是用jQuery类库的选择器获得的对象</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var domObj = document.getElementById(<span class="string">"id"</span>); <span class="string">"//DOM对象"</span></div><div class="line">var <span class="variable">$obj</span> = $(<span class="string">"#id"</span>); <span class="string">"//jQuery对象"</span></div></pre></td></tr></table></figure>
-<h2 id="jQuery对象"><a href="#jQuery对象" class="headerlink" title="jQuery对象"></a>jQuery对象</h2><p>就是通过jQuery包装DOM对象后产生的对象，它是jQuery独有的。如果一个对象是jQuery对象，那么就可以使用jQuery里的方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#foo"</span>).html(); <span class="string">"//获取id为foo的元素内的html代码，html()是jQuery特有的方法"</span></div></pre></td></tr></table></figure>
-<p> 上面的代码等同于</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">document.getElementById(<span class="string">"foo"</span>).innerHTML;</div></pre></td></tr></table></figure>
-<p> 注意:在jQuery对象中无法使用DOM对象的任何方法。例如$(“#id”).innerHTML 和$(“#id”).checked之类的写法都是错误的，可以用$(“#id”).html()和$(“#id”).attr (“checked”)之类的 jQuery方法来代替。同样，DOM对象也不能使用jQuery方法。</p>
-<h2 id="jQuery对象和DOM对象的互相转换"><a href="#jQuery对象和DOM对象的互相转换" class="headerlink" title="jQuery对象和DOM对象的互相转换"></a>jQuery对象和DOM对象的互相转换</h2><p>在上面第一点说了，jquery对象和dom对象是不一样的！比如jquery对象不能使用dom的方法，dom对象不能使用jquery方法，那假如我 jquery没有封装我要的方法，那能怎么办呢？这时我们可以将jquer对象转换成dom对象。</p>
-<h3 id="1-jquery对象转换成-dom对象"><a href="#1-jquery对象转换成-dom对象" class="headerlink" title="1.jquery对象转换成 dom对象"></a>1.jquery对象转换成 dom对象</h3><p>jquery提供了两种方法将一个jquery对象转换成一个dom对象，即[index]和get(index)。可能有人会觉得奇怪，怎么是用下标呢，没错，jquery对象就是一个数组对象.<br>下面代码将演示一个jquery对象转换成dom对象，再使用dom对象的方法。<br>复制代码 代码如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var <span class="variable">$cr</span>=$(<span class="string">"#cr"</span>); <span class="string">"//jquery对象"</span></div><div class="line">var cr = <span class="variable">$cr</span>[0]; <span class="string">"//dom对象 也可写成 var cr=<span class="variable">$cr</span>.get(0)"</span>;</div><div class="line">alert(cr.checked); <span class="string">"//检测这个checkbox是否给选中"</span></div></pre></td></tr></table></figure>
-<h3 id="2-dom对象转换成jquery对象"><a href="#2-dom对象转换成jquery对象" class="headerlink" title="2.dom对象转换成jquery对象"></a>2.dom对象转换成jquery对象</h3><p>对于一个dom对象，只需要用$()把dom对象包装起来，就可以获得一个jquery对象了，方法为$(dom对象)<br>复制代码 代码如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cr=document.getElementById(<span class="string">"cr"</span>); <span class="string">"//dom对象"</span></div><div class="line">var <span class="variable">$cr</span> = $(cr); <span class="string">"//转换成jquery对象"</span></div></pre></td></tr></table></figure>
-<p>转换后可以任意使用jquery中的方法了.<br>通过以上的方法，可以任意的相互转换jquery对象和dom对象.</p>
-<p>最后再次强调，dom对象才能使用dom中的方法，jquery对象不可以使用dom中的方法，但 jquery对象提供了一套更加完善的工具用于操作dom,关于jquery的dom操作将在后面的文章进行详细讲解.</p>
+                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
                 <hr>
                 
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2017/09/27/hello-world/" data-toggle="tooltip" data-placement="top"
-                           title="Hello World">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2017/09/18/regex/" data-toggle="tooltip" data-placement="top"
-                           title="正则表达式集结号">Next Post &rarr;</a>
+                        <a href="/2017/09/22/Dom/" data-toggle="tooltip" data-placement="top"
+                           title="DOM对象和JQuery对象的区别">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -210,7 +199,7 @@
 
             <div class="hidden-xs col-sm-3 toc-col">
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM对象"><span class="toc-text">DOM对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery对象"><span class="toc-text">jQuery对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery对象和DOM对象的互相转换"><span class="toc-text">jQuery对象和DOM对象的互相转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-jquery对象转换成-dom对象"><span class="toc-text">1.jquery对象转换成 dom对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-dom对象转换成jquery对象"><span class="toc-text">2.dom对象转换成jquery对象</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
                 </div>
             </div>
         </div>
